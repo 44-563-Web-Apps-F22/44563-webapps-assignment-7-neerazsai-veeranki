@@ -57,7 +57,9 @@
 
 	<input type="text" id="input" class="form-control" autofocus><br>
 
-	<button onclick="makeNewDiv()" class="btn btn-info">Add Value</button><br><br>
+	<button onclick="makeNewDiv()" class="btn btn-info">Add Value</button>
+	<button onclick="get()" class="btn btn-info">Get</button>
+	<button onclick="spin()" class="btn btn-info">Spin</button><br><br>
 
 	<div class="flex-container" id="target">
 		<div class="cycler baseBlock">row item 1</div>
@@ -78,6 +80,31 @@
 		let container = document.getElementById('target')
 		container.appendChild(element)
 
+	}
+
+	function get() {
+
+		let cyclerItems = document.getElementsByClassName("cycler baseBlock")
+
+		let len = cyclerItems.length
+
+		if (len > 0) {
+			cyclerItems[len-1].remove()
+		}
+
+	}
+
+	function spin() {
+		let cyclerItems = document.getElementsByClassName("cycler baseBlock")
+
+		let len = cyclerItems.length
+
+		if (len > 1) {
+			let removedItem = cyclerItems[len-1]
+			cyclerItems[len-1].remove()
+			let container = document.getElementById('target')
+			container.insertBefore(removedItem, container.firstChild)
+		}
 	}
 </script>
 
