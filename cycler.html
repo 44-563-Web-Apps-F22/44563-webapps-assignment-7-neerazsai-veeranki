@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<title>Cycler</title>
+	<style>
+		.flex-container {
+			display: flex;
+			flex-direction: row;
+			background-color: #ffd480;
+		}
+
+		.flex-container>div {
+			/*div children of the flex container*/
+			background-color: #aaff80;
+			border: 4px solid white;
+			margin: 5px;
+			padding: 10px;
+			font-size: 20px;
+		}
+
+		.baseBlock {
+			border-radius: 5px;
+		}
+
+		.baseBlock:hover {
+			box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+		}
+
+		/* Responsive layout */
+		@media (max-width: 600px) {
+			.flex-container {
+				flex-direction: column;
+				background-color: green;
+			}
+		}
+	</style>
+</head>
+
+
+
+<body>
+
+	<div class="card text-center text-light bg-success">
+		<h1>Neerazsai Veeranki builds a cycler</h1>
+	</div><br>
+
+	<mark> Enter text to be displayed on each div and press the button to add div element.! </mark><br><br>
+
+	<input type="text" id="input" class="form-control" autofocus><br>
+
+	<button onclick="makeNewDiv()" class="btn btn-info">Add Value</button><br><br>
+
+	<div class="flex-container" id="target">
+		<div class="cycler baseBlock">row item 1</div>
+		<div class="cycler baseBlock">row item 2</div>
+		<div class="cycler baseBlock">row item 3</div>
+	</div>
+
+
+
+</body>
+<script>
+
+	function makeNewDiv() {
+		let element = document.createElement("div")
+		element.innerHTML = document.getElementById("input").value
+		element.className = "cycler baseBlock"
+
+		let container = document.getElementById('target')
+		container.appendChild(element)
+
+	}
+</script>
+
+</html>
