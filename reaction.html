@@ -45,7 +45,7 @@
       <p class="card-header" id="countdown">Count </p>
     </div><br>
 
-    <button type="button" class="btn btn-primary" onclick="buttonPress1()">
+    <button type="button" class="btn btn-primary" onclick="startTime()">
       Start Timer</button>
 
     <button type="button" class="btn btn-primary" onclick="recordReact()">
@@ -64,16 +64,32 @@
       myTime = Date.now()
 
       console.log(myTime)
-      
-      setTimeout(function () {
-        document.getElementById('target').style.color = "red"
-      }, 3000)
+
     }
 
-    function buttonPress2() {
+    function startTime() {
+
+      for (i=0;i<4;i++) {
+        display(i)
+      }
+
       setTimeout(() => {
-        document.getElementById('target').style.color = "red"
+        if (myTime == undefined) {
+          document.getElementById("target").innerHTML = "Too Slow"
+        } else {
+          let buttonTime = Date.now()
+          let lapse = buttonTime - myTime 
+          document.getElementById("target").innerHTML = "Time was " + lapse
+        }
       }, 3000)
+      
+    }
+
+    function display(i) {
+      setTimeout(() => {
+        document.getElementById('countdown').innerHTML = i
+      }, ((3-i)*1000))
+      
     }
   </script>
 
