@@ -58,6 +58,10 @@
 
     </div>
 
+    <div  class="container-fluid">
+        <button onclick="reset()" class="btn btn-info">Reset</button><br><br>
+    </div>
+
     <div class="container-fluid">
 
         <div class="container container-padding">
@@ -173,7 +177,9 @@
     var chestCount = 0
     var score = 0
     var lastCheck = 12
-    var treasureLocation = 18
+    var treasureLocation = generateRandom(0,24)
+
+    console.log(treasureLocation)
 
     function check(position) {
 
@@ -223,6 +229,26 @@
         score = score+2
         document.getElementById("score").innerText = "Score is "+score+"."
         document.getElementById("help").innerText = result
+
+    }
+
+    function generateRandom(min, max) {
+        var num = Math.floor(Math.random() * (max - min + 1)) + min;
+        return (num === 12) ? generateRandom(min, max) : num;
+    }
+
+    function reset() {
+
+
+        chestCount = 0
+        score = 0
+        treasureLocation = generateRandom(0,24)
+
+        console.log(treasureLocation)
+
+        document.getElementById("chests").innerText = "Number of chests checked is zero."
+        document.getElementById("score").innerText = "Score is unknown."
+        document.getElementById("help").innerText = "Help report."
 
     }
 </script>

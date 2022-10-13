@@ -69,8 +69,13 @@
 
     function startTime() {
 
-      for (i=0;i<4;i++) {
-        display(i)
+      let min = 2
+      let max = 11
+
+      let limit = Math.floor(Math.random() * (max - min) ) + min;
+
+      for (i=0;i<limit;i++) {
+        display(i, limit)
       }
 
       setTimeout(() => {
@@ -81,14 +86,14 @@
           let lapse = buttonTime - myTime 
           document.getElementById("target").innerHTML = "Time was " + lapse
         }
-      }, 3000)
+      }, limit*1000)
       
     }
 
-    function display(i) {
+    function display(i, limit) {
       setTimeout(() => {
         document.getElementById('countdown').innerHTML = i
-      }, ((3-i)*1000))
+      }, ((limit-i)*1000))
       
     }
   </script>

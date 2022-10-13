@@ -59,6 +59,7 @@
 
 	<button onclick="makeNewDiv()" class="btn btn-info">Add Value</button>
 	<button onclick="get()" class="btn btn-info">Get</button>
+	<button onclick="swap()" class="btn btn-info">Swap</button>
 	<button onclick="spin()" class="btn btn-info">Spin</button><br><br>
 
 	<div class="flex-container" id="target">
@@ -105,6 +106,36 @@
 			let container = document.getElementById('target')
 			container.insertBefore(removedItem, container.firstChild)
 		}
+	}
+
+	function swap() {
+		let cyclerItems = document.getElementsByClassName("cycler baseBlock")
+
+		let min = 0
+		let max = cyclerItems.length
+
+		let rand1 = Math.floor(Math.random() * (max - min) ) + min;
+		let rand2 = Math.floor(Math.random() * (max - min) ) + min;
+
+		if ((rand1 != rand2) && (max > 1)) {
+
+			let item1 = cyclerItems[rand1]
+			let item2 = cyclerItems[rand2]
+
+			let container = document.getElementById('target')
+			
+			if (rand1 > rand2) {
+				cyclerItems[rand1].remove()
+				cyclerItems[rand2].remove()
+			} else {
+				cyclerItems[rand2].remove()				
+				cyclerItems[rand1].remove()
+			}
+
+			container.insertBefore(item2, cyclerItems[rand1])
+			container.insertBefore(item1, cyclerItems[rand2])
+		}
+
 	}
 </script>
 
